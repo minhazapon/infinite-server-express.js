@@ -13,7 +13,7 @@ app.use(cors())
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Infinite Chapters Server!')
 })
 
 ////mongodb////
@@ -41,6 +41,18 @@ async function run() {
     //BACKEND OPERATION//
 
 
+    const bookCollection = client.db('bookDB').collection('bookData')
+
+    app.get('/bookData',  async(req, res) => {
+    
+       const cursor = bookCollection.find() 
+       const result = await cursor.toArray()
+       res.send(result)
+
+    })
+
+
+
 
 
     //BACKEND OPERATION//
@@ -60,5 +72,5 @@ run().catch(console.dir);
 ////mongodb////
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Infinite Chapters Server port ${port}`)
 })
