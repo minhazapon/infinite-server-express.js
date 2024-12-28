@@ -189,6 +189,41 @@ async function run() {
     }) 
 
 
+    //crud operation////
+
+    const wishCollection = client.db('wishlistDB').collection('wishlistData')
+    
+
+    /////add system////////
+    app.post('/wishlistData', async(req, res) =>{
+       
+       const wishlistData = req.body 
+       console.log(wishlistData)
+       const result = await wishCollection.insertOne(wishlistData)
+       res.send(result)
+     
+    }) 
+    /////add system////////
+    
+    //////read/////////////
+
+    app.get('/wishlistData', async(req, res) => {
+         
+    const cursor = wishCollection.find()
+    const result = await cursor.toArray()
+    res.send(result)
+          
+    })
+    
+    //////read/////////////
+   
+
+
+
+
+    //crud operation////
+
+
 
 
 
