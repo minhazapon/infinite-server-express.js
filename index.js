@@ -216,6 +216,22 @@ async function run() {
     })
     
     //////read/////////////
+
+
+    //////delete//////
+     
+      app.delete('/wishlistData/:id',  async(req, res) => {
+         
+        const id = req.params.id 
+        const query = { _id: new ObjectId(id) }
+        const result = await wishCollection.deleteOne(query)
+        res.send(result)
+ 
+       
+     })
+ 
+    //////delete//////
+ 
    
 
 
